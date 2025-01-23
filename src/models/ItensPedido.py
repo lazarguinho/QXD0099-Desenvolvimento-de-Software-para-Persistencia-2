@@ -8,6 +8,9 @@ class ItensPedidoCreate(BaseModel):
     id: int
     preco: float
     quantidade: int
+    usuario_id: int
+    pedido_id: int
+    produto_id: int
     
 class ItensPedido(ItensPedidoCreate):
 	id: int

@@ -12,6 +12,7 @@ class ProdutoCreate(BaseModel):
     preco: str
     imagemUrl: str
     Estoque: int
+    categoria_id: int
 
 class Produto(ProdutoCreate):
     id: int

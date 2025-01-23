@@ -6,6 +6,7 @@ from sqlalchemy import ForeignKey
 
 class PagamentoCreate(BaseModel):
     data: str
+    pedido_id: int
     
 class Pagamento(PagamentoCreate):
     id: int
@@ -18,6 +19,6 @@ class PagamentoModel(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     data = Column(String, nullable=False)
-    
     pedido_id = Column(Integer, ForeignKey("pedidos.id"), nullable=False)
     pedido = relationship("PedidoModel", back_populates="pagamento")
+    

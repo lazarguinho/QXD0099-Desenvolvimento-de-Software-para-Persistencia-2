@@ -7,6 +7,6 @@ produto_CrudRouter = SQLAlchemyCRUDRouter(
     schema=Produto,
     create_schema=ProdutoCreate,
     db_model=ProdutoModel,
-    db=get_db,  # Sessão do BD
+    db=get_db,  
     prefix="produtos",
 )

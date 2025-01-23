@@ -4,9 +4,9 @@ from src.models.Pagamento import Pagamento, PagamentoModel, PagamentoCreate
 from data.database import get_db
 
 pagamento_CrudRouter = SQLAlchemyCRUDRouter(
-    schema=Pagamento,  # Modelo
+    schema=Pagamento,
     create_schema=PagamentoCreate,
-    db_model=PagamentoModel,  # Tabela no BD
-    db=get_db,  # Sessão do BD
+    db_model=PagamentoModel,
+    db=get_db, 
     prefix='pagamentos'
 )

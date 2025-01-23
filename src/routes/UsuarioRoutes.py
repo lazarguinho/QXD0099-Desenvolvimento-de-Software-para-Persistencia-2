@@ -15,10 +15,10 @@ def get_quantidade_usuarios(db: Session = Depends(get_db)):
     return {"quantidade": quantidade}
 
 usuario_CrudRouter = SQLAlchemyCRUDRouter(
-    schema=Usuario,  # Modelo
-    create_schema=UsuarioCreate,  # Modelo para criação
-    db_model=UsuarioModel,  # Tabela no BD
-    db=get_db,  # Sessão do BD
+    schema=Usuario,  
+    create_schema=UsuarioCreate,  
+    db_model=UsuarioModel,  
+    db=get_db,  
     prefix='usuarios'
 )
 

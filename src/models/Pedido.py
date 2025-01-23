@@ -25,6 +25,6 @@ class PedidoModel(Base):
     produto_id = Column(Integer, ForeignKey("produtos.id"), nullable=False)
     usuario_id = Column(Integer, ForeignKey("usuarios.id"))
     
-    pagamento = relationship("PagamentoModel", back_populates="pedido", uselist=False)    
+    pagamento = relationship("PagamentoModel", back_populates="pedido")    
     usuario = relationship("UsuarioModel", back_populates="pedidos")
     itens = relationship("ItensPedidoModel", back_populates="pedido")

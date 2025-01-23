@@ -3,7 +3,7 @@ from src.models.ItensPedido import ItensPedido, ItensPedidoCreate, ItensPedidoMo
 
 from data.database import get_db
 
-itens_pedido_router = SQLAlchemyCRUDRouter(
+itens_pedido_CrudRouter = SQLAlchemyCRUDRouter(
     schema=ItensPedido,
     create_schema=ItensPedidoCreate,
     db_model=ItensPedidoModel,

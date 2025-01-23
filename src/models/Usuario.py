@@ -1,9 +1,23 @@
 from sqlalchemy import Column, Integer, String
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, List
 from data.database import Base
+from sqlalchemy.orm import relationship
 
-class Usuario(Base):
+
+class UsuarioCreate(BaseModel):
+    nome: str
+    email: str
+    telefone: str
+    senha: str
+    
+class Usuario(UsuarioCreate):
+    id: int
+    
+    class Config:
+        orm_mode = True
+        
+class UsuarioModel(Base):
     __tablename__ = 'usuarios'
            
     id = Column(Integer, primary_key=True, index=True)
@@ -12,12 +26,4 @@ class Usuario(Base):
     telefone = Column(String, unique=True, nullable=True)
     senha = Column(String, nullable=False)
     
-    
-class UsuarioSchema(BaseModel):
-    nome: str
-    email: str
-    telefone: Optional[str]
-    senha: str
-    
-    class Config:
-        orm_mode = True
+    pedidos = relationship("PedidoModel", back_populates="usuario")

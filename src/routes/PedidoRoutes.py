@@ -1,12 +1,12 @@
 from fastapi_crudrouter import SQLAlchemyCRUDRouter
-from src.models.Pedido import Pedido, PedidoSchema
+from src.models.Pedido import Pedido, PedidoCreate, PedidoModel
 
 from data.database import get_db
 
 pedido_router = SQLAlchemyCRUDRouter(
-    schema=PedidoSchema,  # Modelo
-    db_model=Pedido,  # Tabela no BD
+    schema=Pedido,
+    create_schema=PedidoCreate,
+    db_model=PedidoModel,
     db=get_db,  # Sessão do BD
-    prefix="pedidos",  # Prefixo das rotas
-    tags=["Pedidos"]
+    prefix="pedidos",
 )

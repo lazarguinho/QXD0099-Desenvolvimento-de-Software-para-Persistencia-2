@@ -1,16 +1,22 @@
 from sqlalchemy import Column, Integer, String
 from pydantic import BaseModel
-from typing import Optional
+from typing import Optional, Set
 from data.database import Base
+from sqlalchemy.orm import relationship
 
-class Categoria(Base):
+class CategoriaCreate(BaseModel):
+    nome: str
+
+class Categoria(CategoriaCreate):
+    id: int
+
+    class Config:
+        orm_mode = True
+        
+class CategoriaModel(Base):
     __tablename__ = 'categorias'
 
     id = Column(Integer, primary_key=True, index=True)
     nome = Column(String, nullable=False)
-
-class CategoriaSchema(BaseModel):
-    nome: str
-
-    class Config:
-        orm_mode = True
+    
+    produtos = relationship("ProdutoModel", back_populates="categorias")
